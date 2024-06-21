@@ -18,7 +18,10 @@ class Position:
         Returns:
             Position: The sum of the two Position objects.
         """
-        pass
+        if not isinstance(other, Position):
+            return NotImplemented
+        return Position(self.x + other.x, self.y + other.y)
+
 
     def __sub__(self, other:'Position') -> Optional['Position']:
         """
@@ -30,4 +33,6 @@ class Position:
         Returns:
             Position: The difference of the two Position objects.
         """
-        pass
+        if not isinstance(other, Position):
+            return NotImplemented
+        return Position(self.x - other.x, self.y - other.y)
