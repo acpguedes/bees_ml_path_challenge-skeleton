@@ -56,3 +56,6 @@ class AStarStrategy(PathfindingStrategy):
         current = end
         while current != start:
             path.append(current)
+            current = came_from[current]
+        path.reverse()
+        return path

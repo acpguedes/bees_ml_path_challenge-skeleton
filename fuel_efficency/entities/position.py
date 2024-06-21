@@ -18,30 +18,22 @@ class Position:
 
     def __add__(self, other: 'Position') -> Optional['Position']:
         if not isinstance(other, Position):
-            return NotImplemented
+            raise NotImplementedError(f"Cannot add Position and {type(other)}")
         return Position(self.x + other.x, self.y + other.y)
 
     def __sub__(self, other: 'Position') -> Optional['Position']:
         if not isinstance(other, Position):
-            return NotImplemented
+            raise NotImplementedError(f"Cannot subtract Position and {type(other)}")
         return Position(self.x - other.x, self.y - other.y)
 
     def __lt__(self, other: 'Position') -> bool:
-        if not isinstance(other, Position):
-            return NotImplemented
         return (self.x, self.y) < (other.x, other.y)
 
     def __le__(self, other: 'Position') -> bool:
-        if not isinstance(other, Position):
-            return NotImplemented
         return (self.x, self.y) <= (other.x, other.y)
 
     def __gt__(self, other: 'Position') -> bool:
-        if not isinstance(other, Position):
-            return NotImplemented
         return (self.x, self.y) > (other.x, other.y)
 
     def __ge__(self, other: 'Position') -> bool:
-        if not isinstance(other, Position):
-            return NotImplemented
         return (self.x, self.y) >= (other.x, other.y)
