@@ -8,31 +8,40 @@ class Position:
     x: int = sys.maxsize
     y: int = sys.maxsize
 
-    def __add__(self, other:'Position') -> Optional['Position']:
-        """
-        Add two Position objects together.
+    def __hash__(self) -> int:
+        return hash((self.x, self.y))
 
-        Args:
-            other (Position): The other Position object to add to this one.
+    def __eq__(self, other: 'Position') -> bool:
+        if not isinstance(other, Position):
+            return NotImplemented
+        return self.x == other.x and self.y == other.y
 
-        Returns:
-            Position: The sum of the two Position objects.
-        """
+    def __add__(self, other: 'Position') -> Optional['Position']:
         if not isinstance(other, Position):
             return NotImplemented
         return Position(self.x + other.x, self.y + other.y)
 
-
-    def __sub__(self, other:'Position') -> Optional['Position']:
-        """
-        Subtract two Position objects.
-
-        Args:
-            other (Position): The other Position object to subtract from this one.
-
-        Returns:
-            Position: The difference of the two Position objects.
-        """
+    def __sub__(self, other: 'Position') -> Optional['Position']:
         if not isinstance(other, Position):
             return NotImplemented
         return Position(self.x - other.x, self.y - other.y)
+
+    def __lt__(self, other: 'Position') -> bool:
+        if not isinstance(other, Position):
+            return NotImplemented
+        return (self.x, self.y) < (other.x, other.y)
+
+    def __le__(self, other: 'Position') -> bool:
+        if not isinstance(other, Position):
+            return NotImplemented
+        return (self.x, self.y) <= (other.x, other.y)
+
+    def __gt__(self, other: 'Position') -> bool:
+        if not isinstance(other, Position):
+            return NotImplemented
+        return (self.x, self.y) > (other.x, other.y)
+
+    def __ge__(self, other: 'Position') -> bool:
+        if not isinstance(other, Position):
+            return NotImplemented
+        return (self.x, self.y) >= (other.x, other.y)
